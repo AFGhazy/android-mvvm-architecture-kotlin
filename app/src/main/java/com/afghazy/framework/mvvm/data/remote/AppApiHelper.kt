@@ -1,12 +1,11 @@
 package com.afghazy.framework.mvvm.data.remote
 
+import com.afghazy.framework.mvvm.BuildConfig
 import com.afghazy.framework.mvvm.data.model.api.blog.BlogResponse
-import com.afghazy.framework.mvvm.data.model.api.login.FbLoginRequest
-import com.afghazy.framework.mvvm.data.model.api.login.GoogleLoginRequest
-import com.afghazy.framework.mvvm.data.model.api.login.LoginResponse
-import com.afghazy.framework.mvvm.data.model.api.login.ServerLoginRequest
+import com.afghazy.framework.mvvm.data.model.api.login.*
 import com.afghazy.framework.mvvm.data.model.api.opensource.OpenSourceResponse
 import com.afghazy.framework.mvvm.data.remote.header.ApiHeader
+import com.rx2androidnetworking.Rx2AndroidNetworking
 import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -22,24 +21,39 @@ import javax.inject.Singleton
 class AppApiHelper @Inject constructor(
     override val apiHeader: ApiHeader
 ) : ApiHelper {
+    override fun doFbLoginApiCall(request: FbLoginRequest) =
+        Rx2AndroidNetworking.post(BuildConfig.BASE_URL + ApiEndPoint.ENDPOINT_FACEBOOK_LOGIN)
+            .addHeaders(apiHeader.publicApiHeader)
+            .addBodyParameter(request)
+            .build()
+            .getObjectSingle(LoginResponse::class.java)
 
-    override fun doFbLoginApiCall(request: FbLoginRequest): Single<LoginResponse> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun doGoogleLoginApiCall(request: GoogleLoginRequest) =
+        Rx2AndroidNetworking.post(BuildConfig.BASE_URL + ApiEndPoint.ENDPOINT_GOOGLE_LOGIN)
+            .addHeaders(apiHeader.publicApiHeader)
+            .addBodyParameter(request)
+            .build()
+            .getObjectSingle(LoginResponse::class.java)
 
-    override fun doGoogleLoginApiCall(request: GoogleLoginRequest): Single<LoginResponse> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun doServerLoginApiCall(request: ServerLoginRequest) =
+        Rx2AndroidNetworking.post(BuildConfig.BASE_URL + ApiEndPoint.ENDPOINT_SERVER_LOGIN)
+            .addHeaders(apiHeader.publicApiHeader)
+            .addBodyParameter(request)
+            .build()
+            .getObjectSingle(LoginResponse::class.java)
 
-    override fun doServerLoginApiCall(request: ServerLoginRequest): Single<LoginResponse> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun doLogoutApiCall() = Rx2AndroidNetworking.post(BuildConfig.BASE_URL + ApiEndPoint.ENDPOINT_LOGOUT)
+        .addHeaders(apiHeader.protectedApiHeader)
+        .build()
+        .getObjectSingle(LogoutResponse::class.java)
 
-    override fun getBlogApiCall(): Single<BlogResponse> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun getBlogApiCall() = Rx2AndroidNetworking.get(BuildConfig.BASE_URL + ApiEndPoint.ENDPOINT_BLOG)
+        .addHeaders(apiHeader.protectedApiHeader)
+        .build()
+        .getObjectSingle(BlogResponse::class.java)
 
-    override fun getOpenSourceApiCall(): Single<OpenSourceResponse> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun getOpenSourceApiCall() = Rx2AndroidNetworking.get(BuildConfig.BASE_URL + ApiEndPoint.ENDPOINT_OPEN_SOURCE)
+        .addHeaders(apiHeader.protectedApiHeader)
+        .build()
+        .getObjectSingle(OpenSourceResponse::class.java)
 }
