@@ -7,20 +7,31 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.0"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
     defaultConfig {
         applicationId "com.afghazy.framework.mvvm"
-        minSdkVersion 21
-        targetSdkVersion 29
+
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "\"http://www.mocky.io/v2\"")
+            buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")
+        }
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BASE_URL", "\"http://www.mocky.io/v2\"")
+            buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")
         }
     }
     dataBinding {
