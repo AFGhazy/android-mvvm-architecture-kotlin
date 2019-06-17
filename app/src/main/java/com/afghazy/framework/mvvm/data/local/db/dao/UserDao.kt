@@ -18,13 +18,13 @@ interface UserDao {
     fun delete(user: User)
 
     @Query("SELECT * FROM users WHERE name LIKE :name LIMIT 1")
-    fun findByName(name: String): Observable<User>
+    fun findByName(name: String): Single<User>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(user: User): Observable<Long>
+    fun insert(user: User): Single<Long>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(users: List<User>): Observable<List<Long>>
+    fun insertAll(users: List<User>): Single<List<Long>>
 
     @Query("SELECT * FROM users")
     fun loadAll(): Observable<List<User>>

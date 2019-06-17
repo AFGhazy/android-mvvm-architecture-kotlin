@@ -16,7 +16,7 @@ import com.afghazy.framework.mvvm.data.model.db.User
  * find me at https://github.com/afghazy
  */
 
-@Database(entities = [User::class, Question::class, Option::class], version = 1)
+@Database(entities = [User::class, Question::class, Option::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun optionDao(): OptionDao

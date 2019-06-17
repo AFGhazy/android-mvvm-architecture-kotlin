@@ -1,10 +1,7 @@
 package com.afghazy.framework.mvvm.data.model.db
 
 import android.os.Parcelable
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
+import androidx.room.*
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
@@ -17,7 +14,8 @@ import kotlinx.android.parcel.Parcelize
         entity = Question::class,
         parentColumns = ["id"],
         childColumns = ["question_id"]
-    )]
+    )],
+    indices = [Index(value = ["question_id"], name = "question_id")]
 )
 data class Option(
     @Expose

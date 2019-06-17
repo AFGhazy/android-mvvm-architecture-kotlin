@@ -10,13 +10,11 @@ import java.lang.ref.WeakReference
 abstract class BaseViewModel<N>(
     val dataManager: DataManager,
     val schedulerProvider: SchedulerProvider,
-    val compositeDisposable: CompositeDisposable,
-    navigator: N
+    val compositeDisposable: CompositeDisposable
 ) : ViewModel() {
     val isLoading = ObservableBoolean()
-    private val nav: WeakReference<N> = WeakReference(navigator)
-    val navigator: N?
-        get() = nav.get()
+    var navigator: N? = null
+    val nav: WeakReference<N?> = WeakReference(navigator)
 
     override fun onCleared() {
         compositeDisposable.clear()

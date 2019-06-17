@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MvvmApp</string>
+
+    <!--feed-->
+    <!--feed-->
+    <string name="feed_title">My Feed</string>
+    <string name="open_source">Open Source</string>
+    <string name="blog">Blog</string>
 </resources>

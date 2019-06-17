@@ -12,7 +12,7 @@ import javax.inject.Singleton
  */
 
 @Singleton
-class ApiPrefHelper @Inject constructor(val sharedPreferences: SharedPreferences) :
+class AppPrefHelper @Inject constructor(val sharedPreferences: SharedPreferences) :
     PrefHelper {
     override var accessToken: String
         get() = sharedPreferences.getString(PREF_KEY_ACCESS_TOKEN, "") ?: ""
