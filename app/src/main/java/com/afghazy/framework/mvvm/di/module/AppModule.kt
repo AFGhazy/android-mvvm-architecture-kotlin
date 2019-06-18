@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.room.Room
 import com.afghazy.framework.mvvm.BuildConfig
-import com.afghazy.framework.mvvm.data.local.db.AppDatabase
 import com.afghazy.framework.mvvm.data.local.prefs.AppPrefHelper
 import com.afghazy.framework.mvvm.data.local.prefs.PrefHelper
 import com.afghazy.framework.mvvm.data.manager.AppDataManager
@@ -26,6 +25,9 @@ import dagger.Module
 import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Singleton
+import com.afghazy.framework.mvvm.data.local.db.AppDatabase
+
+
 
 
 /**

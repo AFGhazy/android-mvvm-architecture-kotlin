@@ -10,3 +10,7 @@ package com.afghazy.framework.mvvm.utils
 const val DB_NAME = "afghazy.db"
 
 const val PREF_NAME = "afghazy_prefs"
+
+const val SEED_DATABASE_QUESTIONS = "seed/questions.json"
+
+const val SEED_DATABASE_OPTIONS = "seed/options.json"

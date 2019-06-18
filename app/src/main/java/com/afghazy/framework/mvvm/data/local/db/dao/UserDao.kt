@@ -21,10 +21,10 @@ interface UserDao {
     fun findByName(name: String): Single<User>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(user: User): Single<Long>
+    fun insert(user: User)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(users: List<User>): Single<List<Long>>
+    fun insertAll(users: List<User>)
 
     @Query("SELECT * FROM users")
     fun loadAll(): Observable<List<User>>

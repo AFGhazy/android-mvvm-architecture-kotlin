@@ -26,7 +26,7 @@ class FeedActivity : BaseActivity<ActivityFeedBinding, Any, FeedViewModel>(), Ha
     @Inject
     internal lateinit var factory: ViewModelProviderFactory
 
-    override val viewModel: BaseViewModel<Any>
+    override val viewModel: FeedViewModel
         get() = ViewModelProviders.of(this, factory).get(FeedViewModel::class.java)
 
     override val layoutId: Int

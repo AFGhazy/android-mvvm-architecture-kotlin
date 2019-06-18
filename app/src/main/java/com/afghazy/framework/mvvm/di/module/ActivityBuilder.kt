@@ -4,6 +4,8 @@ import com.afghazy.framework.mvvm.ui.feed.FeedActivity
 import com.afghazy.framework.mvvm.ui.feed.FeedActivityModule
 import com.afghazy.framework.mvvm.ui.feed.blogs.BlogFragmentProvider
 import com.afghazy.framework.mvvm.ui.feed.opensource.OpenSourceFragmentProvider
+import com.afghazy.framework.mvvm.ui.splash.SplashActivity
+import com.afghazy.framework.mvvm.ui.splash.SplashActivityModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -21,4 +23,7 @@ abstract class ActivityBuilder {
         BlogFragmentProvider::class,
         OpenSourceFragmentProvider::class])
     internal abstract fun bindFeedActivity(): FeedActivity
+
+    @ContributesAndroidInjector(modules = [SplashActivityModule::class])
+    internal abstract fun bindSplashActivity(): SplashActivity
 }

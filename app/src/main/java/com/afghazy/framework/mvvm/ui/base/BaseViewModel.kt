@@ -13,8 +13,14 @@ abstract class BaseViewModel<N>(
     val compositeDisposable: CompositeDisposable
 ) : ViewModel() {
     val isLoading = ObservableBoolean()
-    var navigator: N? = null
-    val nav: WeakReference<N?> = WeakReference(navigator)
+    var _nav: WeakReference<N?>? = null
+
+    fun setNavigator(nav: N?) {
+        _nav = WeakReference(nav)
+    }
+
+    val navigator: N?
+        get() = _nav?.get()
 
     override fun onCleared() {
         compositeDisposable.clear()

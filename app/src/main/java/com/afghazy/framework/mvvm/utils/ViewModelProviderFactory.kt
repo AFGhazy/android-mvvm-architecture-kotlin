@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.afghazy.framework.mvvm.data.manager.DataManager
 import com.afghazy.framework.mvvm.ui.feed.FeedViewModel
+import com.afghazy.framework.mvvm.ui.splash.SplashViewModel
 import com.afghazy.framework.mvvm.utils.rx.AppSchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
@@ -23,6 +24,9 @@ class ViewModelProviderFactory @Inject constructor(
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return if(modelClass.isAssignableFrom(FeedViewModel::class.java)) {
             FeedViewModel(dataManager, schedulerProvider, compositeDisposable) as T
+        }
+        else if(modelClass.isAssignableFrom(SplashViewModel::class.java)) {
+            SplashViewModel(dataManager, schedulerProvider, compositeDisposable) as T
         }
         else {
             throw IllegalArgumentException("ViewModel Not Found")

@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.afghazy.framework.mvvm.data.model.db.Question
+import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
 
@@ -19,10 +20,10 @@ import io.reactivex.Single
 interface QuestionDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(question: Question): Single<Long>
+    fun insert(question: Question)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(questions: List<Question>): Single<List<Long>>
+    fun insertAll(questions: List<Question>)
 
     @Query("SELECT * FROM questions")
     fun loadAll(): Observable<List<Question>>

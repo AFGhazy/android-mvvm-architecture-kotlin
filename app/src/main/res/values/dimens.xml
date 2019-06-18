@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+ ~ Created by Ahmed Fathy Ghazy
+ ~ email ahmedfathyghazy@gmail.com
+ ~ find me at https://github.com/afghazy
+ -->
+
+<resources>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+</resources>
