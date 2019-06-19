@@ -2,6 +2,7 @@ package com.afghazy.framework.mvvm.data.local.db.dao
 
 import androidx.room.*
 import com.afghazy.framework.mvvm.data.model.db.User
+import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
 
@@ -21,10 +22,10 @@ interface UserDao {
     fun findByName(name: String): Single<User>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(user: User)
+    fun insert(user: User): Completable
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(users: List<User>)
+    fun insertAll(users: List<User>): Completable
 
     @Query("SELECT * FROM users")
     fun loadAll(): Observable<List<User>>

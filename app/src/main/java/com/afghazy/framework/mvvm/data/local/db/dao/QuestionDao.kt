@@ -20,10 +20,10 @@ import io.reactivex.Single
 interface QuestionDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(question: Question)
+    fun insert(question: Question): Completable
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(questions: List<Question>)
+    fun insertAll(questions: List<Question>): Completable
 
     @Query("SELECT * FROM questions")
     fun loadAll(): Observable<List<Question>>

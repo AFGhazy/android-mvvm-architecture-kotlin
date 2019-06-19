@@ -5,6 +5,7 @@ import androidx.room.*
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
+import java.util.*
 
 @Parcelize
 @Entity(
@@ -18,14 +19,8 @@ import kotlinx.android.parcel.Parcelize
     indices = [Index(value = ["question_id"], name = "question_id")]
 )
 data class Option(
-    @Expose
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val id: Long,
-
-    @Expose
-    @SerializedName("created_at")
-    @ColumnInfo(name = "created_at")
-    val createdAt: String,
 
     @Expose
     @SerializedName("question_id")
@@ -40,10 +35,5 @@ data class Option(
     @Expose
     @SerializedName("is_correct")
     @ColumnInfo(name = "is_correct")
-    val isCorrect: Boolean,
-
-    @Expose
-    @SerializedName("updated_at")
-    @ColumnInfo(name = "updated_at")
-    val updatedAt: String
+    val isCorrect: Boolean
 ) : Parcelable

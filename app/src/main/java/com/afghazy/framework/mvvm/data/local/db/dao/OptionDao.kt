@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.afghazy.framework.mvvm.data.model.db.Option
+import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
 
@@ -18,10 +19,10 @@ import io.reactivex.Single
 @Dao
 interface OptionDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(option: Option)
+    fun insert(option: Option): Completable
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(options: List<Option>)
+    fun insertAll(options: List<Option>): Completable
 
     @Query("SELECT * FROM options")
     fun loadAll(): Observable<List<Option>>

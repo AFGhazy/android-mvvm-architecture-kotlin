@@ -5,6 +5,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
+import java.util.*
 
 
 @Parcelize
@@ -14,10 +15,10 @@ data class User(
     val id: Long,
 
     @ColumnInfo(name = "created_at")
-    val createdAt: String,
+    val createdAt: String? = Date().toString(),
 
     @ColumnInfo(name = "updated_at")
-    val updatedAt: String,
+    val updatedAt: String? = Date().toString(),
 
     val name: String
 ) : Parcelable

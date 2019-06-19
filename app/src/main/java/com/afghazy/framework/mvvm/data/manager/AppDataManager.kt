@@ -12,6 +12,7 @@ import com.google.gson.Gson
 import io.reactivex.Observable
 import javax.inject.Inject
 import com.google.gson.internal.`$Gson$Types`
+import io.reactivex.Completable
 import java.lang.reflect.Type
 
 // extends all the data providers (Api and Local (db and pref))
@@ -21,34 +22,34 @@ class AppDataManager @Inject constructor(
     val prefHelper: PrefHelper,
     val gson: Gson
 ) : DataManager {
-    override fun seedDatabaseOptions(): Observable<Boolean> {
-        return appDatabase.optionDao().loadAll()
-            .concatMap { all ->
-                println(all)
-                if (all.isEmpty()) {
-                    val type: Type =
-                        `$Gson$Types`.newParameterizedTypeWithOwner(null, List::class.java, Option::class.java)
-                    val optionL =
-                        gson.fromJson<List<Option>>(loadJSONFromAsset(context, SEED_DATABASE_OPTIONS), type)
-                    println(optionL)
-                    appDatabase.optionDao().insertAll(optionL)
-                }
-                Observable.just(true)
-            }
+    override fun seedQuestions(): Completable =
+        allQuestions.first(emptyList()).flatMapCompletable {
+            if(it.isEmpty()) insertQuestions(allAssetsQuestions)
+            else Completable.complete()
+        }
+
+    override fun seedOptions(): Completable =
+        allOptions.first(emptyList()).flatMapCompletable {
+            if(it.isEmpty()) insertOptions(allAssetsOptions)
+            else Completable.complete()
+        }
+
+    override val allAssetsQuestions: List<Question> = with(`$Gson$Types`.newParameterizedTypeWithOwner(null, List::class.java, Question::class.java)) {
+        gson.fromJson<List<Question>>(loadJSONFromAsset(context, SEED_DATABASE_QUESTIONS), this)
     }
 
-    override fun seedDatabaseQuestions(): Observable<Boolean> {
-        return appDatabase.optionDao().loadAll()
-            .concatMap { all ->
-                if (all.isEmpty()) {
-                    val type: Type =
-                        `$Gson$Types`.newParameterizedTypeWithOwner(null, List::class.java, Question::class.java)
-                    val questionL =
-                        gson.fromJson<List<Question>>(loadJSONFromAsset(context, SEED_DATABASE_QUESTIONS), type)
-                    appDatabase.questionDao().insertAll(questionL)
-                }
-                Observable.just(true)
-            }
+    override val allAssetsOptions: List<Option> = with(`$Gson$Types`.newParameterizedTypeWithOwner(null, List::class.java, Option::class.java)) {
+        gson.fromJson<List<Option>>(loadJSONFromAsset(context, SEED_DATABASE_OPTIONS), this)
     }
+
+    override val allQuestions: Observable<List<Question>>
+        get() = appDatabase.questionDao().loadAll()
+
+    override val allOptions: Observable<List<Option>>
+        get() = appDatabase.optionDao().loadAll()
+
+    override fun insertQuestions(qu: List<Question>) = appDatabase.questionDao().insertAll(qu)
+
+    override fun insertOptions(op: List<Option>) = appDatabase.optionDao().insertAll(op)
 
 }

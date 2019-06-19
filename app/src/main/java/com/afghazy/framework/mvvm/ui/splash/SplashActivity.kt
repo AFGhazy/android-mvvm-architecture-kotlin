@@ -32,7 +32,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashNavigator, Spla
 
 
     override fun openLogin() {
-        showLoading()
+
     }
 
     override fun openMain() {
