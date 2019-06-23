@@ -1,16 +1,11 @@
 package com.afghazy.framework.mvvm.ui.splash
 
-import android.content.Context
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.AttributeSet
-import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.afghazy.framework.mvvm.BR
 import com.afghazy.framework.mvvm.R
 import com.afghazy.framework.mvvm.databinding.ActivitySplashBinding
 import com.afghazy.framework.mvvm.ui.base.BaseActivity
-import com.afghazy.framework.mvvm.utils.ViewModelProviderFactory
 import javax.inject.Inject
 
 

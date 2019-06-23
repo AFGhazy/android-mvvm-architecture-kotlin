@@ -5,9 +5,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.afghazy.framework.mvvm.BR
 import com.afghazy.framework.mvvm.R
 import com.afghazy.framework.mvvm.databinding.ActivityFeedBinding
-import com.afghazy.framework.mvvm.utils.ViewModelProviderFactory
 import com.afghazy.framework.mvvm.ui.base.BaseActivity
-import com.afghazy.framework.mvvm.ui.base.BaseViewModel
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
@@ -24,7 +22,7 @@ class FeedActivity : BaseActivity<ActivityFeedBinding, FeedViewModel>(), HasSupp
     @Inject
     internal lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
     @Inject
-    internal lateinit var factory: ViewModelProviderFactory
+    internal lateinit var factory: FeedViewModel.Factory
 
     override val viewModel: FeedViewModel
         get() = ViewModelProviders.of(this, factory).get(FeedViewModel::class.java)
