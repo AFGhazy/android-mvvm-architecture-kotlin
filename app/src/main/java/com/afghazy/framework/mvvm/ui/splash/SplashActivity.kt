@@ -6,6 +6,7 @@ import com.afghazy.framework.mvvm.BR
 import com.afghazy.framework.mvvm.R
 import com.afghazy.framework.mvvm.databinding.ActivitySplashBinding
 import com.afghazy.framework.mvvm.ui.base.BaseActivity
+import com.afghazy.framework.mvvm.ui.login.LoginActivity
 import javax.inject.Inject
 
 
@@ -27,7 +28,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>(), S
 
 
     override fun openLogin() {
-
+        startActivity(LoginActivity.intent(this))
     }
 
     override fun openMain() {
