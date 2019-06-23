@@ -20,15 +20,15 @@ data class LoginResponse(
 
     @Expose
     @SerializedName("fb_profile_pic_url")
-    val fbProfilePicUrl: String,
+    val fbProfilePicUrl: String?,
 
     @Expose
     @SerializedName("google_profile_pic_url")
-    val googleProfilePicUrl: String,
+    val googleProfilePicUrl: String?,
 
     @Expose
     @SerializedName("server_profile_pic_url")
-    val serverProfilePicUrl: String,
+    val serverProfilePicUrl: String?,
 
     @Expose
     @SerializedName("message")

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+ ~ Created by Ahmed Fathy Ghazy
+ ~ email ahmedfathyghazy@gmail.com
+ ~ find me at https://github.com/afghazy
+ -->
+
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">mocky.io</domain>
+    </domain-config>
+</network-security-config>

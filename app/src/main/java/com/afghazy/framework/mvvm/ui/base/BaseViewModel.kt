@@ -25,4 +25,8 @@ abstract class BaseViewModel<N,I : BaseInteractor>(
         compositeDisposable.clear()
         super.onCleared()
     }
+
+    fun setIsLoading(isLoading: Boolean) {
+        this.isLoading.set(isLoading)
+    }
 }

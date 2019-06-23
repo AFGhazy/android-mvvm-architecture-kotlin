@@ -8,7 +8,7 @@ package com.afghazy.framework.mvvm.ui.login
  */
 
 interface LoginNavigator {
-    fun openLogin()
+    fun login()
 
     fun openMain()
 }

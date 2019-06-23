@@ -24,8 +24,8 @@ import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Singleton
 import com.afghazy.framework.mvvm.data.local.db.AppDatabase
-
-
+import com.afghazy.framework.mvvm.data.remote.header.PublicApiHeader
+import dagger.Reusable
 
 
 /**
@@ -87,6 +87,12 @@ class AppModule {
             preferencesHelper.currentUserId
         )
     }
+
+    @Provides
+    @Reusable
+    internal fun providePublicApiHeader(
+        @ApiInfo apiKey: String
+    ) = PublicApiHeader(apiKey)
 
     @Provides
     internal fun provideSchedulerProvider(): SchedulerProvider = AppSchedulerProvider()

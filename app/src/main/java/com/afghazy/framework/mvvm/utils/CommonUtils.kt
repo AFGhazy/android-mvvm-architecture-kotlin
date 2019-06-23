@@ -4,6 +4,7 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.util.Patterns
 import java.nio.charset.Charset
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.afghazy.framework.mvvm.BuildConfig
@@ -38,3 +39,6 @@ fun loadJSONFromAsset(context: Context, jsonFileName: String): String {
 
     return String(buffer, Charset.forName("UTF-8"))
 }
+
+
+fun isEmailValid(email: String) = Patterns.EMAIL_ADDRESS.matcher(email).matches()
