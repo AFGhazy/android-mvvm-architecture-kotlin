@@ -22,7 +22,7 @@ import javax.inject.Inject
 
 class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>(), SplashNavigator {
     @Inject
-    lateinit var factory: ViewModelProviderFactory
+    lateinit var factory: SplashViewModel.Factory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

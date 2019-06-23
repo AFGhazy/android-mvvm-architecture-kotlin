@@ -1,8 +1,11 @@
 package com.afghazy.framework.mvvm.ui.splash
 
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.afghazy.framework.mvvm.ui.base.BaseViewModel
 import com.afghazy.framework.mvvm.utils.rx.AppSchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
+import javax.inject.Inject
 
 /**
  * Created by Ahmed Fathy Ghazy on 2019-06-18
@@ -27,6 +30,14 @@ class SplashViewModel(interactor: SplashInteractor,
                 }
                 .subscribe()
         )
+    }
+
+    class Factory @Inject constructor(val splashInteractor: SplashInteractor,
+                  val schedulerProvider: AppSchedulerProvider,
+                  val compositeDisposable: CompositeDisposable) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            return SplashViewModel(splashInteractor, schedulerProvider, compositeDisposable) as T
+        }
     }
 
 }
