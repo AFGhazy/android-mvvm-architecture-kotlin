@@ -4,10 +4,9 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.afghazy.framework.mvvm.data.model.db.Question
+import com.afghazy.framework.mvvm.data.model.local.Question
 import io.reactivex.Completable
 import io.reactivex.Observable
-import io.reactivex.Single
 
 
 /**

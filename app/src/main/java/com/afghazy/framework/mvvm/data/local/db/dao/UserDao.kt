@@ -1,7 +1,7 @@
 package com.afghazy.framework.mvvm.data.local.db.dao
 
 import androidx.room.*
-import com.afghazy.framework.mvvm.data.model.db.User
+import com.afghazy.framework.mvvm.data.model.local.User
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single

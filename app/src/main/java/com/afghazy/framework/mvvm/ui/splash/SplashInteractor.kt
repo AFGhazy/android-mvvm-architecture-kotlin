@@ -3,8 +3,9 @@ package com.afghazy.framework.mvvm.ui.splash
 import android.content.Context
 import com.afghazy.framework.mvvm.data.local.db.AppDatabase
 import com.afghazy.framework.mvvm.data.local.prefs.PrefHelper
-import com.afghazy.framework.mvvm.data.model.db.Option
-import com.afghazy.framework.mvvm.data.model.db.Question
+import com.afghazy.framework.mvvm.data.model.local.LoggedInMode
+import com.afghazy.framework.mvvm.data.model.local.Option
+import com.afghazy.framework.mvvm.data.model.local.Question
 import com.afghazy.framework.mvvm.ui.base.BaseInteractor
 import com.afghazy.framework.mvvm.utils.SEED_DATABASE_OPTIONS
 import com.afghazy.framework.mvvm.utils.SEED_DATABASE_QUESTIONS
@@ -58,5 +59,9 @@ class SplashInteractor @Inject constructor(
     fun insertQuestions(qu: List<Question>) = appDatabase.questionDao().insertAll(qu)
 
     fun insertOptions(op: List<Option>) = appDatabase.optionDao().insertAll(op)
+
+    var loggedInMode: LoggedInMode
+        get() = prefHelper.currentUserLoggedInMode
+        set(value) { prefHelper.currentUserLoggedInMode = value }
 
 }

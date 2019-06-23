@@ -1,6 +1,7 @@
 package com.afghazy.framework.mvvm.data.local.prefs
 
 import android.content.SharedPreferences
+import com.afghazy.framework.mvvm.data.model.local.LoggedInMode
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -26,9 +27,9 @@ class AppPrefHelper @Inject constructor(val sharedPreferences: SharedPreferences
         get() = sharedPreferences.getLong(PREF_KEY_CURRENT_USER_ID, 0)
         set(value) { sharedPreferences.inTransaction { putLong(PREF_KEY_CURRENT_USER_ID, value) } }
 
-    override var currentUserLoggedInMode: Int
-        get() = sharedPreferences.getInt(PREF_KEY_USER_LOGGED_IN_MODE, 0)
-        set(value) { sharedPreferences.inTransaction { putInt(PREF_KEY_USER_LOGGED_IN_MODE, value) } }
+    override var currentUserLoggedInMode: LoggedInMode
+        get() = LoggedInMode.fromInt(sharedPreferences.getInt(PREF_KEY_USER_LOGGED_IN_MODE, 0))
+        set(value) { sharedPreferences.inTransaction { putInt(PREF_KEY_USER_LOGGED_IN_MODE, value.value) } }
 
     override var currentUserName: String
         get() = sharedPreferences.getString(PREF_KEY_CURRENT_USER_NAME, "") ?: ""

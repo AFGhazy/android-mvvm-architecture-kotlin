@@ -1,4 +1,4 @@
-package com.afghazy.framework.mvvm.data.model.db
+package com.afghazy.framework.mvvm.data.model.local
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo

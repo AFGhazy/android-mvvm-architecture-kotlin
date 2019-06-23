@@ -2,6 +2,7 @@ package com.afghazy.framework.mvvm.ui.splash
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.afghazy.framework.mvvm.data.model.local.LoggedInMode
 import com.afghazy.framework.mvvm.ui.base.BaseViewModel
 import com.afghazy.framework.mvvm.utils.rx.AppSchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
@@ -26,7 +27,10 @@ class SplashViewModel(interactor: SplashInteractor,
                 .subscribeOn(schedulerProvider.io)
                 .observeOn(schedulerProvider.ui)
                 .doOnComplete {
-
+                    when(interactor.loggedInMode) {
+                        LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT -> navigator?.openLogin()
+                        else -> navigator?.openMain()
+                    }
                 }
                 .subscribe()
         )

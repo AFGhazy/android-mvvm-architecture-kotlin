@@ -5,9 +5,9 @@ import androidx.room.RoomDatabase
 import com.afghazy.framework.mvvm.data.local.db.dao.OptionDao
 import com.afghazy.framework.mvvm.data.local.db.dao.QuestionDao
 import com.afghazy.framework.mvvm.data.local.db.dao.UserDao
-import com.afghazy.framework.mvvm.data.model.db.Option
-import com.afghazy.framework.mvvm.data.model.db.Question
-import com.afghazy.framework.mvvm.data.model.db.User
+import com.afghazy.framework.mvvm.data.model.local.Option
+import com.afghazy.framework.mvvm.data.model.local.Question
+import com.afghazy.framework.mvvm.data.model.local.User
 
 
 /**

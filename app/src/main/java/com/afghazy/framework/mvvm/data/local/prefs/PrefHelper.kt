@@ -1,5 +1,7 @@
 package com.afghazy.framework.mvvm.data.local.prefs
 
+import com.afghazy.framework.mvvm.data.model.local.LoggedInMode
+
 
 /**
  * Created by Ahmed Fathy Ghazy on 2019-06-16
@@ -11,7 +13,7 @@ interface PrefHelper {
     var accessToken: String
     var currentUserEmail: String
     var currentUserId: Long
-    var currentUserLoggedInMode: Int
+    var currentUserLoggedInMode: LoggedInMode
     var currentUserName: String
     var currentUserProfilePicUrl: String
 }

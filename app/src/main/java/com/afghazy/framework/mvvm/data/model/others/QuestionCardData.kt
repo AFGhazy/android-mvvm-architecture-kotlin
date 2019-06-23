@@ -1,8 +1,8 @@
 package com.afghazy.framework.mvvm.data.model.others
 
 import android.os.Parcelable
-import com.afghazy.framework.mvvm.data.model.db.Option
-import com.afghazy.framework.mvvm.data.model.db.Question
+import com.afghazy.framework.mvvm.data.model.local.Option
+import com.afghazy.framework.mvvm.data.model.local.Question
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
