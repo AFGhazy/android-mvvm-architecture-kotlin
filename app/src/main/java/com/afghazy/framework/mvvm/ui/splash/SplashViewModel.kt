@@ -1,6 +1,5 @@
 package com.afghazy.framework.mvvm.ui.splash
 
-import com.afghazy.framework.mvvm.data.manager.DataManager
 import com.afghazy.framework.mvvm.ui.base.BaseViewModel
 import com.afghazy.framework.mvvm.utils.rx.AppSchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
@@ -11,15 +10,16 @@ import io.reactivex.disposables.CompositeDisposable
  * find me at https://github.com/afghazy
  */
 
-class SplashViewModel(dataManager: DataManager,
+class SplashViewModel(interactor: SplashInteractor,
                       schedulerProvider: AppSchedulerProvider,
                       compositeDisposable: CompositeDisposable) :
-    BaseViewModel<SplashNavigator>(dataManager, schedulerProvider, compositeDisposable) {
+    BaseViewModel<SplashNavigator, SplashInteractor>(interactor, schedulerProvider, compositeDisposable) {
 
     fun startSeeding() {
+
         compositeDisposable.add(
-            dataManager.seedQuestions()
-                .andThen(dataManager.seedOptions())
+            interactor.seedQuestions()
+                .andThen(interactor.seedOptions())
                 .subscribeOn(schedulerProvider.io)
                 .observeOn(schedulerProvider.ui)
                 .doOnComplete {

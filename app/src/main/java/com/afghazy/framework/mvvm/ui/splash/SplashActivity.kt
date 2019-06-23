@@ -20,7 +20,7 @@ import javax.inject.Inject
  * find me at https://github.com/afghazy
  */
 
-class SplashActivity : BaseActivity<ActivitySplashBinding, SplashNavigator, SplashViewModel>(), SplashNavigator {
+class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>(), SplashNavigator {
     @Inject
     lateinit var factory: ViewModelProviderFactory
 

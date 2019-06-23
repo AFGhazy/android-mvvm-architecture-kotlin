@@ -2,13 +2,12 @@ package com.afghazy.framework.mvvm.ui.base
 
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.ViewModel
-import com.afghazy.framework.mvvm.data.manager.DataManager
 import com.afghazy.framework.mvvm.utils.rx.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
 import java.lang.ref.WeakReference
 
-abstract class BaseViewModel<N>(
-    val dataManager: DataManager,
+abstract class BaseViewModel<N,I : BaseInteractor>(
+    val interactor: I,
     val schedulerProvider: SchedulerProvider,
     val compositeDisposable: CompositeDisposable
 ) : ViewModel() {

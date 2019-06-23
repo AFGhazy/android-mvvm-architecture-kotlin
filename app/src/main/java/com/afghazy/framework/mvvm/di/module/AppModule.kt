@@ -7,8 +7,6 @@ import androidx.room.Room
 import com.afghazy.framework.mvvm.BuildConfig
 import com.afghazy.framework.mvvm.data.local.prefs.AppPrefHelper
 import com.afghazy.framework.mvvm.data.local.prefs.PrefHelper
-import com.afghazy.framework.mvvm.data.manager.AppDataManager
-import com.afghazy.framework.mvvm.data.manager.DataManager
 import com.afghazy.framework.mvvm.data.remote.ApiHelper
 import com.afghazy.framework.mvvm.data.remote.AppApiHelper
 import com.afghazy.framework.mvvm.data.remote.header.ProtectedApiHeader
@@ -56,10 +54,6 @@ class AppModule {
     @Provides
     @Singleton
     internal fun provideContext(application: Application): Context = application
-
-    @Provides
-    @Singleton
-    internal fun provideDataManager(appDataManager: AppDataManager): DataManager = appDataManager
 
     @Provides
     @DatabaseInfo

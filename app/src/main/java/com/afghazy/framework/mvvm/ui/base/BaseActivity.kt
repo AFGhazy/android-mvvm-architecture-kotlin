@@ -15,7 +15,7 @@ import com.afghazy.framework.mvvm.utils.getLoadingDialog
 import com.afghazy.framework.mvvm.utils.isNetworkConnected
 import dagger.android.AndroidInjection
 
-abstract class BaseActivity<D : ViewDataBinding, N, VM : BaseViewModel<N>> : AppCompatActivity() {
+abstract class BaseActivity<D : ViewDataBinding, VM : BaseViewModel<*,*>> : AppCompatActivity() {
 
     abstract val viewModel: VM
     lateinit var viewDataBinding: D

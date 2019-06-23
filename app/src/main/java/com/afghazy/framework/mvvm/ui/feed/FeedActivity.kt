@@ -20,7 +20,7 @@ import javax.inject.Inject
  * find me at https://github.com/afghazy
  */
 
-class FeedActivity : BaseActivity<ActivityFeedBinding, Any, FeedViewModel>(), HasSupportFragmentInjector {
+class FeedActivity : BaseActivity<ActivityFeedBinding, FeedViewModel>(), HasSupportFragmentInjector {
     @Inject
     internal lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
     @Inject
