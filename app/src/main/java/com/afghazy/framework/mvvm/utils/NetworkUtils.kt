@@ -4,9 +4,8 @@ import android.content.Context
 import android.net.NetworkInfo
 import androidx.core.content.ContextCompat.getSystemService
 import android.net.ConnectivityManager
+import com.github.pwittchen.reactivenetwork.library.rx2.ReactiveNetwork
 
 
 fun isNetworkConnected(context: Context) =
-    (context.getSystemService(Context.CONNECTIVITY_SERVICE) as? ConnectivityManager)?.let {
-        it.isDefaultNetworkActive
-    } ?: false
+    ReactiveNetwork.checkInternetConnectivity()

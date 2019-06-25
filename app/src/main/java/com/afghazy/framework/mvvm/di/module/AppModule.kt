@@ -3,6 +3,7 @@ package com.afghazy.framework.mvvm.di.module
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.room.Room
 import com.afghazy.framework.mvvm.BuildConfig
 import com.afghazy.framework.mvvm.data.local.prefs.AppPrefHelper
@@ -25,6 +26,7 @@ import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Singleton
 import com.afghazy.framework.mvvm.data.local.db.AppDatabase
 import com.afghazy.framework.mvvm.data.remote.header.PublicApiHeader
+import dagger.Binds
 import dagger.Reusable
 
 
@@ -104,4 +106,8 @@ class AppModule {
     @Singleton
     internal fun provideSharedPreferences(context: Context, @PrefsInfo prefFileName: String): SharedPreferences =
             context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
+
+    @Provides
+    @Reusable
+    internal fun provideLocalBroadcastManager(application: Application) = LocalBroadcastManager.getInstance(application)
 }

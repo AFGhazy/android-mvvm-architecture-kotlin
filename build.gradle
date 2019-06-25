@@ -60,6 +60,11 @@ ext {
     timberVersion = '4.5.1'
     lifecycleVersion = '2.0.0'
 
+    alerterVersion = '4.0.2'
+    rxNetworkVersion = '3.0.3'
+    leakCanaryVersion = '2.0-alpha-2'
+    rxBroadcastVersion = '2.0.0'
+
     // Test dependencies
     junitVersion = '4.12'
     espressoVersion = '3.1.0'

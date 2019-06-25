@@ -109,4 +109,13 @@ dependencies {
     // view model
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
     kapt "androidx.lifecycle:lifecycle-compiler:$rootProject.lifecycleVersion"
+
+    implementation "com.tapadoo.android:alerter:$rootProject.alerterVersion"
+
+    implementation "com.github.pwittchen:reactivenetwork-rx2:$rootProject.rxNetworkVersion"
+
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$rootProject.leakCanaryVersion"
+    implementation "com.cantrowitz:rxbroadcast:$rootProject.rxBroadcastVersion"
+
+
 }
